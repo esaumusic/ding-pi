@@ -1,6 +1,8 @@
 # ding-pi
 Turn your raspberry pi 3 into a midi usb host/router/midi processor by way of mididings!
 
+![photo of raspberry pi 3 with usb devices plugged in](https://github.com/esaumusic/ding-pi/blob/master/IMG-3204.JPG)
+
 ESAU's DingPi Script (no this isn't chinese food, this turns your raspberry pi 3 into a midi usb host/router/midi processor by way of MidiDings!)
 
 ## Prerequisites:
@@ -27,3 +29,5 @@ ESAU's DingPi Script (no this isn't chinese food, this turns your raspberry pi 3
 + MPC1000 midi sequences can play back out to Blofeld as backing tracks or performance where you manipulate blofeld knobs in real-time.
 + MPC1000 can record cc midi or knob movements from blofeld synth (note data filtered out to avoid bad midi loops from keyboard)
 + DIY Arduino/teensy foot pedal buttons each send midi cc values to mpc to control misc. performance functions with my feet in real-time.
+
+![photo of hardware setup. waldorf blofeld synth module, akai mpc1000, iConnectivity mio 1x1 usb interface, Xkey 25 midi keyboard, TC Electronics Nova Delay, and Raspberry Pi 3](https://github.com/esaumusic/ding-pi/blob/master/IMG-3206.JPG)
