@@ -5,7 +5,7 @@ Turn your raspberry pi 3 into a midi usb host/router/midi processor by way of mi
 
 ESAU's DingPi Script (no this isn't chinese food, this turns your raspberry pi 3 into a midi usb host/router/midi processor by way of MidiDings!)
 
-## Prerequisites:
+## Prerequisites
 + Raspberry Pi 3/3+ (other models untested but might work)
 + Installed Raspbian Stretch Lite (https://www.raspberrypi.org/downloads/raspbian/)
 + Installed alsa utilities (sudo apt-get install alsa-utils if connected to internet)
