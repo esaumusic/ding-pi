@@ -43,36 +43,15 @@ run(
     PortSplit({
         # here we duplicate keyboard midi 8 times, then filter each one to a specific channel and send to respective mio midi interface channel for multi-timbral capture into MPC1000 sequencer.
         'xkey out': [
-            ChannelFilter(1) >> Output('mio in',1),
-            ChannelFilter(2) >> Output('mio in',2),
-            ChannelFilter(3) >> Output('mio in',3),
-            ChannelFilter(4) >> Output('mio in',4),
-            ChannelFilter(5) >> Output('mio in',5),
-            ChannelFilter(6) >> Output('mio in',6),
-            ChannelFilter(7) >> Output('mio in',7),
-            ChannelFilter(8) >> Output('mio in',8)
+            Port('mio in')
         ],
         # with mpc correctly configured for multi-timbral, incoming midi passes thru to mpc midi out which we duplicate eight times here and filter/send out via mio midi interface to the blofeld midi in
         'mio out': [
-            ChannelFilter(1) >> Output('blofeld in',1),
-            ChannelFilter(2) >> Output('blofeld in',2),
-            ChannelFilter(3) >> Output('blofeld in',3),
-            ChannelFilter(4) >> Output('blofeld in',4),
-            ChannelFilter(5) >> Output('blofeld in',5),
-            ChannelFilter(6) >> Output('blofeld in',6),
-            ChannelFilter(7) >> Output('blofeld in',7),
-            ChannelFilter(8) >> Output('blofeld in',8)
+            Port('blofeld in')
         ],
         # Another duplication x 8, but this time from blofeld into mio/mpc. What's special here is KeyFilter(Lower=0) which is saying, "filter out all notes greater than or equal to 0" (in effect all notes!) which leaves us with just cc data.
         'blofeld out': [
-            KeyFilter(lower=0) >> Output('mio in',1),
-            KeyFilter(lower=0) >> Output('mio in',2),
-            KeyFilter(lower=0) >> Output('mio in',3),
-            KeyFilter(lower=0) >> Output('mio in',4),
-            KeyFilter(lower=0) >> Output('mio in',5),
-            KeyFilter(lower=0) >> Output('mio in',6),
-            KeyFilter(lower=0) >> Output('mio in',7),
-            KeyFilter(lower=0) >> Output('mio in',8)
+            KeyFilter(lower=0) >>Port('mio in')
         ],
         'teensy out': Output('mio in',1) # last but not least my diy arduino/teensy 6 button midi footswitch routed into mio/mpc to do something, not sure what yet but hey I had an extra usb port on the Pi so why not.
     })
